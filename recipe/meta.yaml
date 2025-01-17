@@ -15,12 +15,13 @@ build:
   noarch: python
   entry_points:
     - register-runner=gitlab_runner_api:cli.register_runner
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - pip
     - python {{ python_min }}
+    - pip
+    - setuptools
     - setuptools_scm
   run:
     - colorlog
